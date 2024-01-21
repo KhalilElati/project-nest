@@ -1,3 +1,12 @@
+## ENV Variables
+DB_HOST=localhost
+DB_PORT=5432
+DB_PASSWORD=********
+DB_USERNAME=********
+DB_NAME=mytho_morphosis
+SYNCHRONIZE=true
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
