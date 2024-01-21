@@ -5,6 +5,6 @@ import { BookmarkModule } from './bookmark/bookmark.module';
 import { HealthCheckModule } from './health_check/health_check.module';
 
 @Module({
-  imports: [UserModule, BookmarkModule,  HealthCheckModule]
+  imports: [UserModule, BookmarkModule, HealthCheckModule],
 })
 export class UserModule {}

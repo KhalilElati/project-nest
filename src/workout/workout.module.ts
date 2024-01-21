@@ -4,6 +4,6 @@ import { SessionModule } from './session/session.module';
 @Module({
   imports: [SessionModule],
   exports: [],
-  providers: []
+  providers: [],
 })
 export class WorkoutModule {}

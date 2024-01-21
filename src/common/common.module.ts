@@ -7,6 +7,6 @@ import { ConfigModule } from './config/config.module';
   imports: [SwaggerModule, ConfigModule],
   exports: [],
   controllers: [],
-  providers:[PostgresConfigService]
+  providers: [PostgresConfigService],
 })
 export class CommonModule {}
