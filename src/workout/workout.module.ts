@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { WorkoutController } from './workout/workout.controller';
 import { WorkoutController } from './workout.controller';
 import { WorkoutService } from './workout.service';
 
