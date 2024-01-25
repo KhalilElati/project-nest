@@ -5,13 +5,13 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { CaloriesModule } from './calories/calories.module';
 import { FridgeModule } from './fridge/fridge.module';
-import { WorkoutModule } from './workout/workout.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 // import configuration from './app.config'
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { PostgresConfigService } from './common/database/database.config';
+import { WorkoutModule } from './workout/workout.module';
 
 @Module({
   imports: [
