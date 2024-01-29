@@ -14,7 +14,6 @@ export class Session extends BaseModel {
   @JoinColumn({ name: 'workout_id' })
   workout: Workout;
   
-  @ManyToMany(() => Exercise)
-  @JoinTable()
+  @OneToMany(() => Exercise, (exercise) => exercise.session)
   exercises: Exercise[];
 }

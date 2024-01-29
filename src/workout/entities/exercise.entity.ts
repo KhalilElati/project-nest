@@ -13,5 +13,9 @@ export class Exercise extends BaseModel {
   
   @Column()
   number_of_reps: number;
+
+  @ManyToOne(() => Session, (session) => session.exercises)
+  @JoinColumn({ name: 'session_id' })
+  session: Session;
   
 }
