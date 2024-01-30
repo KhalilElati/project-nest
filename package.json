@@ -32,6 +32,8 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.2.0",
     "@nestjs/typeorm": "^10.0.1",
+    "amazon-cognito-identity-js": "^6.3.7",
+    "aws-sdk": "^2.1545.0",
     "mysql2": "^3.7.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
