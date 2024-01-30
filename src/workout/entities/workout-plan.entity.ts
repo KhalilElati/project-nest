@@ -15,9 +15,6 @@ export class WorkoutPlan extends BaseModel{
     @Column()
     level: level;
 
-    @Column()
-    plan : JSON;
-
     @OneToMany(() => Workout, (Workout) => Workout.workoutPlan)
     workouts: Workout[];
 
