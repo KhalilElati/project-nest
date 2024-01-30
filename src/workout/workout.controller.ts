@@ -2,34 +2,40 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { WorkoutService } from './workout.service';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 import { UpdateWorkoutDto } from './dto/update-workout.dto';
+import { SessionLog } from './entities/session-log.entity';
+import { CreateSessionLogDto } from './dto/create-session-log.dto';
 
-@Controller('workout')
+@Controller()
 export class WorkoutController {
-  constructor(private readonly workoutService: WorkoutService) {}
+  constructor(private readonly workoutService: WorkoutService) {
 
-  @Post()
-  create(@Body() createWorkoutDto: CreateWorkoutDto) {
-    return this.workoutService.create(createWorkoutDto);
   }
 
-  @Get()
-  findAll() {
-    return this.workoutService.findAll();
+  @Get('workouts-plans')
+  getAllWorkoutPlans() {
+    return this.workoutService.getAllWorkoutPlans();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.workoutService.findOne(+id);
+  @Get('workouts-plans/:id')
+  getWorkoutPlan(@Param('id') id: string) {
+    return this.workoutService.getWorkoutPlan(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkoutDto: UpdateWorkoutDto) {
-    return this.workoutService.update(+id, updateWorkoutDto);
+  @Post('workouts-plans/:id')
+  attachWorkoutPlanToUser(@Param('id') workoutPlanId: number){
+    let userId =  1;
+    return this.workoutService.attachWorkoutPlanToUser(workoutPlanId, userId);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.workoutService.remove(+id);
+  @Get('workouts')
+  getAllWorkouts() {
+    let userId = 1;
+    return this.workoutService.getAllWorkouts(userId);
   }
 
+  @Post('workouts/:id/session')
+  logSession(@Param('id') workoutId: number, @Body() sessionLog: CreateSessionLogDto) {
+    let userId = 1;
+    return this.workoutService.logSession(userId, workoutId, sessionLog);
+  }
 }

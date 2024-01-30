@@ -2,8 +2,9 @@ import { BaseModel } from "src/common/base_model.entity";
 import { gender } from "src/common/enums/gender.enum";
 import { level } from "src/common/enums/level.enum";
 import { Workout } from "src/workout/entities/workout.entity";
-import { Column, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
 
+@Entity()
 export class User extends BaseModel{
     @Column()
     first_name: string;
@@ -25,4 +26,7 @@ export class User extends BaseModel{
 
     @OneToMany(() => Workout, (Workout) => Workout.user)
     workouts: Workout[];
+
+    @Column({default: false})
+    has_workout_plan: boolean;
 }

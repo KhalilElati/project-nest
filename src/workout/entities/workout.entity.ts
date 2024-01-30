@@ -1,5 +1,5 @@
 import { BaseModel } from "src/common/base_model.entity";
-import { Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { WorkoutPlan } from "./workout-plan.entity";
 import { SessionLog } from "./session-log.entity";
 import { User } from "src/user/user/entities/user.entity";
@@ -16,4 +16,7 @@ export class Workout extends BaseModel {
     @ManyToOne(() => User, (user) => user.workouts)
     @JoinColumn({ name: 'user_id' })
     user: User;
+
+    @Column({ default: false })
+    active: boolean;
 }   

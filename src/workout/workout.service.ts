@@ -1,26 +1,42 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 import { UpdateWorkoutDto } from './dto/update-workout.dto';
+import { Repository } from 'typeorm';
+import { Workout } from './entities/workout.entity';
+import { WorkoutPlan } from './entities/workout-plan.entity';
+import { User } from 'src/user/user/entities/user.entity';
 
 @Injectable()
 export class WorkoutService {
-  create(createWorkoutDto: CreateWorkoutDto) {
-    return 'This action adds a new workout';
+  constructor(
+    private readonly workoutRepository: Repository<Workout>,
+    private readonly workoutPlanRepository: Repository<WorkoutPlan>,
+    private readonly userRepository: Repository<User>,
+  ) {}
+
+  getAllWorkoutPlans(): Promise<WorkoutPlan[]> {
+    return this.workoutPlanRepository.find();
   }
 
-  findAll() {
-    return `This action returns all workout`;
+  getWorkoutPlan(id: number): Promise<WorkoutPlan> {
+    return this.workoutPlanRepository.findOne({where: {id: id}});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} workout`;
+  async attachWorkoutPlanToUser(workoutPlanId: number, userId: number): Promise<Boolean> {
+    let workoutPlan = await this.workoutPlanRepository.findOne({where: {id: workoutPlanId}});
+    let user = await this.userRepository.findOne({where: {id: userId}});
+    if (user.has_workout_plan) {
+      return false;
+    }
+    let workout = new Workout();
+    workout.user = user;
+    workout.workoutPlan = workoutPlan;
+    workout.active = true;
+    this.workoutRepository.save(workout);
+    return true;
   }
 
-  update(id: number, updateWorkoutDto: UpdateWorkoutDto) {
-    return `This action updates a #${id} workout`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} workout`;
+  async getAllWorkouts(user_id): Promise<Workout[]> {
+    return this.workoutRepository.find({where: {user: {id: user_id}}});
   }
 }
