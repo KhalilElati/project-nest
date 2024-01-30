@@ -1,21 +1,19 @@
-import { BaseModel } from 'src/common/base_model.entity';
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
-import { Session } from './session.entity';
-import { User } from 'src/user/user/entities/user.entity';
+import { BaseModel } from "src/common/base_model.entity";
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Session } from "./session.entity";
 
 @Entity()
 export class Exercise extends BaseModel {
-  @Column()
-  name: string;
+    @Column()
+    name: string;
 
-  @Column()
-  number_of_sets: number;
-  
-  @Column()
-  number_of_reps: number;
+    @Column()
+    number_of_sets: number;
 
-  @ManyToOne(() => Session, (session) => session.exercises)
-  @JoinColumn({ name: 'session_id' })
-  session: Session;
-  
+    @Column()
+    number_of_reps: number;
+
+    @ManyToOne(() => Session, (session) => session.exercises)
+    @JoinColumn({ name: 'session_id' })
+    session: Session;
 }

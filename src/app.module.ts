@@ -16,7 +16,7 @@ import { WorkoutModule } from './workout/workout.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.development.env',
+      envFilePath: '.env',
       isGlobal: true,
       // load: [configuration]
     }),
