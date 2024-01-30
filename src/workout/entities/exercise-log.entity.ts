@@ -4,6 +4,11 @@ import { SessionLog } from './session-log.entity';
 
 @Entity()
 export class ExerciseLog extends BaseModel {
+  constructor(exerciseLog: Partial<ExerciseLog>) {
+    super();
+    Object.assign(this, exerciseLog);
+  }
+
   @Column()
   name: string;
 
