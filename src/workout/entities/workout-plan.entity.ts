@@ -4,6 +4,7 @@ import { level } from "src/common/enums/level.enum";
 import { Column, Entity, OneToMany } from "typeorm";
 import { Workout } from "./workout.entity";
 
+
 @Entity()
 export class WorkoutPlan extends BaseModel{
     @Column()
@@ -15,7 +16,7 @@ export class WorkoutPlan extends BaseModel{
     @Column()
     level: level;
 
-    @Column()
+    @Column({type:'jsonb'})
     plan : JSON;
 
     @OneToMany(() => Workout, (Workout) => Workout.workoutPlan)
