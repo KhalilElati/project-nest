@@ -1,19 +1,20 @@
-import { BaseModel } from 'src/common/base_model.entity';
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
-import { Exercise } from './exercise.entity';
-import { Workout } from './workout.entity';
+import { BaseModel } from "src/common/base_model.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { WorkoutPlan } from "./workout-plan.entity";
+import { Exercise } from "./exercise.entity";
+
 @Entity()
 export class Session extends BaseModel {
-  @Column()
-  muscle_group: string;
+    @Column()
+    muscle_group: string;
 
-  @Column()
-  number_of_exercises: number;
+    @Column()
+    number_of_exercises: number;
 
-  @ManyToOne(() => Workout, (workout) => workout.sessions)
-  @JoinColumn({ name: 'workout_id' })
-  workout: Workout;
-  
-  @OneToMany(() => Exercise, (exercise) => exercise.session)
-  exercises: Exercise[];
+    @ManyToOne(() => WorkoutPlan, (workoutPlan) => workoutPlan.sessions)
+    @JoinColumn({ name: 'workoutPlan_id' })
+    workoutPlan: WorkoutPlan;
+
+    @OneToMany(() => Exercise, (exercise) => exercise.session)
+    exercises: Exercise[];
 }

@@ -1,8 +1,7 @@
 import { BaseModel } from "src/common/base_model.entity";
 import { gender } from "src/common/enums/gender.enum";
 import { level } from "src/common/enums/level.enum";
-import { Exercise } from "src/workout/entities/exercise.entity";
-import { Progress } from "src/workout/entities/progress.entity";
+import { Workout } from "src/workout/entities/workout.entity";
 import { Column, OneToMany } from "typeorm";
 
 export class User extends BaseModel{
@@ -24,6 +23,6 @@ export class User extends BaseModel{
     @Column()
     gender: gender;
 
-    @OneToMany(() => Progress, (progress) => progress.user)
-    progress: Progress[];
+    @OneToMany(() => Workout, (Workout) => Workout.user)
+    workouts: Workout[];
 }

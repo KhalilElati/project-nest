@@ -1,8 +1,8 @@
-import { Session } from "src/workout/entities/session.entity";
-import { BaseModel } from "src/common/base_model.entity";
-import { level } from "src/common/enums/level.enum";
+import { BaseModel } from "../../common/base_model.entity";
+import { level } from "../../common/enums/level.enum";
 import { Column, Entity, OneToMany } from "typeorm";
 import { Workout } from "./workout.entity";
+import { Session } from "./session.entity";
 
 @Entity()
 export class WorkoutPlan extends BaseModel{
@@ -15,9 +15,9 @@ export class WorkoutPlan extends BaseModel{
     @Column()
     level: level;
 
-    @Column()
-    plan : JSON;
-
     @OneToMany(() => Workout, (Workout) => Workout.workoutPlan)
     workouts: Workout[];
+
+    @OneToMany(() => Session, (Session) => Session.workoutPlan)
+    sessions: Session[];
 }
