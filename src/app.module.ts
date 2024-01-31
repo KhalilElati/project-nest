@@ -12,6 +12,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { PostgresConfigService } from './common/database/database.config';
 import { WorkoutModule } from './workout/workout.module';
+import { ArticleModule } from './article/article.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { WorkoutModule } from './workout/workout.module';
     CaloriesModule,
     FridgeModule,
     WorkoutModule,
+    ArticleModule
   ],
   controllers: [AppController],
   providers: [AppService, PostgresConfigService],
