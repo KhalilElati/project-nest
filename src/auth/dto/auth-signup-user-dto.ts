@@ -1,7 +1,6 @@
 import { IsNotEmpty, Matches } from 'class-validator';
 
 export class SignUpUserDto {
-
   @IsNotEmpty()
   email: string;
 
@@ -10,5 +9,4 @@ export class SignUpUserDto {
   // })
   @IsNotEmpty()
   password: string;
-
 }

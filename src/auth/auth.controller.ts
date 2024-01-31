@@ -19,21 +19,18 @@ export class AuthController {
   constructor(
     // private readonly cognito: CognitoProvider
     private authService: AuthService,
-    ) {}
+  ) {}
   @Post('/login')
   loginUser(@Body() authLoginDto: SignInUserDto) {
     const authResult = this.authService.validateUser(authLoginDto);
     return authResult;
   }
 
-    @Post('/signup')
-    signUpUser(@Body() authRegisterDto: SignUpUserDto) {
-        return this.authService.signUp(authRegisterDto);
-    }
+  @Post('/signup')
+  signUpUser(@Body() authRegisterDto: SignUpUserDto) {
+    return this.authService.signUp(authRegisterDto);
+  }
 }
-
-
-
 
 //   @Post('/signup')
 //   signUpUser(@Body() createAuthDto: AuthRegisterUserDto) {

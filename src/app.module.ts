@@ -26,7 +26,6 @@ import { UserService } from './user/user.service';
     TypeOrmModule.forRootAsync({
       useClass: PostgresConfigService,
       inject: [PostgresConfigService],
-          
 
       // imports: [ConfigModule],
     }),

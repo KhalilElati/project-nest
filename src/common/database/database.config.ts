@@ -41,7 +41,6 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
       password: this.configService.get<string>('DB_PASSWORD'),
       // entities:[entities],
       entities: ['dist/**/*.entity{.ts,.js}'],
-      
 
       synchronize: Boolean(process.env.SYNCHRONIZE) || false,
       migrationsTableName: 'migrations', // this field will be used to create the table by name of migrations. You can name it whatever you want. But make sure to use the sensible name
