@@ -28,7 +28,7 @@ import { WorkoutModule } from './workout/workout.module';
       // imports: [ConfigModule],
     }),
     UserModule,
-    AuthModule,
+    // AuthModule,
     CaloriesModule,
     FridgeModule,
     WorkoutModule,
