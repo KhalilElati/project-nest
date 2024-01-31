@@ -12,6 +12,8 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { PostgresConfigService } from './common/database/database.config';
 import { WorkoutModule } from './workout/workout.module';
+import { BaseModel } from './common/base_model.entity';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [
@@ -24,16 +26,17 @@ import { WorkoutModule } from './workout/workout.module';
     TypeOrmModule.forRootAsync({
       useClass: PostgresConfigService,
       inject: [PostgresConfigService],
+          
 
       // imports: [ConfigModule],
     }),
-    UserModule,
     AuthModule,
+    UserModule,
     CaloriesModule,
     FridgeModule,
     WorkoutModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PostgresConfigService],
+  providers: [AppService, PostgresConfigService, UserService],
 })
 export class AppModule {}
