@@ -31,7 +31,9 @@ export class AuthService {
     }
     if (hashedPassword === user.password) {
       const payload = {
-        ...user,
+        id: user.id,
+        email: user.email,
+        role: user.role
       };
       const jwt = this.jwtService.sign(payload);
       return { access_token: jwt };

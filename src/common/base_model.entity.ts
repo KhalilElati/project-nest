@@ -13,7 +13,7 @@ enum Status {
 }
 
 export class BaseModel {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   id: number;
   @CreateDateColumn({
     update: false,

@@ -2,12 +2,15 @@ import { BaseModel } from 'src/common/base_model.entity';
 import { gender } from 'src/common/enums/gender.enum';
 import { level } from 'src/common/enums/level.enum';
 import { Workout } from 'src/workout/entities/workout.entity';
-import { Column, Entity, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { Role } from 'src/common/enums/role.enum';
 
 @Entity('users')
 export class User extends BaseModel {
+
+  
+
   @Column({ nullable: true })
   first_name: string;
   @Column({ nullable: true })
