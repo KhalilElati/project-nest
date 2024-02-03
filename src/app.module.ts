@@ -14,6 +14,7 @@ import { PostgresConfigService } from './common/database/database.config';
 import { WorkoutModule } from './workout/workout.module';
 import { BaseModel } from './common/base_model.entity';
 import { UserService } from './user/user.service';
+import { ArticleModule } from './article/article.module';
 
 @Module({
   imports: [
@@ -31,9 +32,11 @@ import { UserService } from './user/user.service';
     }),
     AuthModule,
     UserModule,
+    // AuthModule,
     CaloriesModule,
     FridgeModule,
     WorkoutModule,
+    ArticleModule
   ],
   controllers: [AppController],
   providers: [AppService, PostgresConfigService, UserService],

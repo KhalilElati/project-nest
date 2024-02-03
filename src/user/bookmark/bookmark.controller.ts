@@ -8,16 +8,16 @@ import {
   Delete,
 } from '@nestjs/common';
 import { BookmarkService } from './bookmark.service';
-import { CreateBookmarkDto } from './dto/create-bookmark.dto';
-import { UpdateBookmarkDto } from './dto/update-bookmark.dto';
+import { bookmarkDto } from './dto/bookmark.dto';
 
 @Controller('bookmark')
 export class BookmarkController {
   constructor(private readonly bookmarkService: BookmarkService) {}
 
   @Post()
-  create(@Body() createBookmarkDto: CreateBookmarkDto) {
-    return this.bookmarkService.create(createBookmarkDto);
+  create(@Body() bookmarkDto: bookmarkDto) {
+    let userId = 1;
+    return this.bookmarkService.create(bookmarkDto, userId);
   }
 
   @Get()
@@ -33,13 +33,14 @@ export class BookmarkController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateBookmarkDto: UpdateBookmarkDto,
+    @Body() updateBookmarkDto: bookmarkDto,
   ) {
     return this.bookmarkService.update(+id, updateBookmarkDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.bookmarkService.remove(+id);
+    let userId  =1;
+    return this.bookmarkService.remove(userId,+id);
   }
 }

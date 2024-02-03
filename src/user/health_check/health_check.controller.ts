@@ -8,16 +8,17 @@ import {
   Delete,
 } from '@nestjs/common';
 import { HealthCheckService } from './health_check.service';
-import { CreateHealthCheckDto } from './dto/create-health_check.dto';
-import { UpdateHealthCheckDto } from './dto/update-health_check.dto';
+import { HealthCheckDto } from './dto/health_check.dto';
+//import { UpdateHealthCheckDto } from './dto/update-health_check.dto';
 
 @Controller('health-check')
 export class HealthCheckController {
   constructor(private readonly healthCheckService: HealthCheckService) {}
 
   @Post()
-  create(@Body() createHealthCheckDto: CreateHealthCheckDto) {
-    return this.healthCheckService.create(createHealthCheckDto);
+  create(@Body() healthCheckDetails: HealthCheckDto) {
+    return this.healthCheckService.create(healthCheckDetails);
+    // return healthCheckDetails;
   }
 
   @Get()
@@ -26,20 +27,20 @@ export class HealthCheckController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.healthCheckService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.healthCheckService.findOne(id);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateHealthCheckDto: UpdateHealthCheckDto,
-  ) {
-    return this.healthCheckService.update(+id, updateHealthCheckDto);
-  }
+  // @Patch(':id')
+  // update(
+  //   @Param('id') id: string,
+  //   @Body() updateHealthCheckDto: UpdateHealthCheckDto,
+  // ) {
+  //   return this.healthCheckService.update(+id, updateHealthCheckDto);
+  // }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.healthCheckService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.healthCheckService.remove(id);
   }
 }
