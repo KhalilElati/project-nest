@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { WorkoutService } from './workout.service';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 import { UpdateWorkoutDto } from './dto/update-workout.dto';
@@ -7,9 +15,7 @@ import { CreateSessionLogDto } from './dto/create-session-log.dto';
 
 @Controller()
 export class WorkoutController {
-  constructor(private readonly workoutService: WorkoutService) {
-
-  }
+  constructor(private readonly workoutService: WorkoutService) {}
 
   @Get('workouts-plans')
   getAllWorkoutPlans() {
@@ -22,8 +28,8 @@ export class WorkoutController {
   }
 
   @Post('workouts-plans/:id')
-  attachWorkoutPlanToUser(@Param('id') workoutPlanId: number){
-    let userId =  1;
+  attachWorkoutPlanToUser(@Param('id') workoutPlanId: number) {
+    let userId = 1;
     return this.workoutService.attachWorkoutPlanToUser(workoutPlanId, userId);
   }
 
@@ -34,7 +40,10 @@ export class WorkoutController {
   }
 
   @Post('workouts/:id/session')
-  logSession(@Param('id') workoutId: number, @Body() sessionLog: CreateSessionLogDto) {
+  logSession(
+    @Param('id') workoutId: number,
+    @Body() sessionLog: CreateSessionLogDto,
+  ) {
     let userId = 1;
     return this.workoutService.logSession(userId, workoutId, sessionLog);
   }

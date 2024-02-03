@@ -1,3 +1,1 @@
-export class CreateWorkoutDto {
-    
-}
+export class CreateWorkoutDto {}

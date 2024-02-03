@@ -1,5 +1,13 @@
 import { BaseModel } from 'src/common/base_model.entity';
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { ExerciseLog } from './exercise-log.entity';
 import { Workout } from './workout.entity';
 @Entity()
@@ -13,7 +21,7 @@ export class SessionLog extends BaseModel {
   @ManyToOne(() => Workout, (workout) => workout.sessionLogs)
   @JoinColumn({ name: 'workout_id' })
   workout: Workout;
-  
+
   @OneToMany(() => ExerciseLog, (exerciseLog) => exerciseLog.sessionLog)
   exerciseLogs: ExerciseLog[];
 }

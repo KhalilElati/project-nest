@@ -1,5 +1,5 @@
 export enum intensity {
-    Easy = 'EASY',
-    Medium = 'MEDIUM',
-    Hard = 'HARD'
+  Easy = 'EASY',
+  Medium = 'MEDIUM',
+  Hard = 'HARD',
 }

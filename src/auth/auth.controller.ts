@@ -9,23 +9,34 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { AuthRegisterUserDto } from './dto/auth-register-user-dto';
-import { AuthLoginUserDto } from './dto/auth-login-user-dto';
-import { CognitoProvider } from './cognito/cognito';
-
+// import { AuthRegisterUserDto } from './dto/auth-register-user-dto';
+// // import { CognitoProvider } from './cognito/cognito';
+import { SignInUserDto } from './dto/auth-signin-user-dto';
+import { AuthService } from './auth.service';
+import { SignUpUserDto } from './dto/auth-signup-user-dto';
 @Controller('')
 export class AuthController {
-  constructor(private readonly cognito: CognitoProvider) {}
+  constructor(
+    // private readonly cognito: CognitoProvider
+    private authService: AuthService,
+  ) {}
   @Post('/login')
-  loginUser(@Body() authLoginDto: AuthLoginUserDto) {
-    const authResult = this.cognito.signIn(authLoginDto);
+  loginUser(@Body() authLoginDto: SignInUserDto) {
+    const authResult = this.authService.validateUser(authLoginDto);
     return authResult;
   }
+
   @Post('/signup')
-  signUpUser(@Body() createAuthDto: AuthRegisterUserDto) {
-    return this.cognito.signUp(createAuthDto);
+  signUpUser(@Body() authRegisterDto: SignUpUserDto) {
+    return this.authService.signUp(authRegisterDto);
   }
 }
+
+//   @Post('/signup')
+//   signUpUser(@Body() createAuthDto: AuthRegisterUserDto) {
+//     return this.cognito.signUp(createAuthDto);
+//   }
+// }
 
 //   @Get()
 //   findAll() {

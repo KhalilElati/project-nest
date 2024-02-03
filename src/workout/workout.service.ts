@@ -23,12 +23,17 @@ export class WorkoutService {
   }
 
   getWorkoutPlan(id: number): Promise<WorkoutPlan> {
-    return this.workoutPlanRepository.findOne({where: {id: id}});
+    return this.workoutPlanRepository.findOne({ where: { id: id } });
   }
 
-  async attachWorkoutPlanToUser(workoutPlanId: number, userId: number): Promise<Boolean> {
-    let workoutPlan = await this.workoutPlanRepository.findOne({where: {id: workoutPlanId}});
-    let user = await this.userRepository.findOne({where: {id: userId}});
+  async attachWorkoutPlanToUser(
+    workoutPlanId: number,
+    userId: number,
+  ): Promise<Boolean> {
+    let workoutPlan = await this.workoutPlanRepository.findOne({
+      where: { id: workoutPlanId },
+    });
+    let user = await this.userRepository.findOne({ where: { id: userId } });
     if (user.has_workout_plan) {
       return false;
     }
@@ -41,13 +46,19 @@ export class WorkoutService {
   }
 
   async getAllWorkouts(user_id): Promise<Workout[]> {
-    return this.workoutRepository.find({where: {user: {id: user_id}}});
+    return this.workoutRepository.find({ where: { user: { id: user_id } } });
   }
 
-  async logSession(user_id: number, workout_id: number, sessionLog: CreateSessionLogDto) {
-    let workout = await this.workoutRepository.findOne({where: {id: workout_id}});
+  async logSession(
+    user_id: number,
+    workout_id: number,
+    sessionLog: CreateSessionLogDto,
+  ) {
+    let workout = await this.workoutRepository.findOne({
+      where: { id: workout_id },
+    });
     if (workout.user.id != user_id) {
-      return("brmchinyk")
+      return 'brmchinyk';
     }
     let sessionLog_db = new SessionLog();
     sessionLog_db.workout = workout;

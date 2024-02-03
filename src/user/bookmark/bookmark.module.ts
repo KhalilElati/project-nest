@@ -5,7 +5,7 @@ import { ArticleService } from 'src/article/article.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Bookmark } from './entities/bookmark.entity';
 import { Article } from 'src/article/entities/article.entity';
-import { UserService } from '../user/user.service';
+import { UserService } from 'src/user/user.service';
 import { User } from '../user/entities/user.entity';
 
 @Module({

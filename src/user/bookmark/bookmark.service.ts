@@ -5,7 +5,7 @@ import { Article } from 'src/article/entities/article.entity';
 import { Repository } from 'typeorm';
 import { ArticleService } from 'src/article/article.service';
 import { Bookmark } from './entities/bookmark.entity';
-import { UserService } from '../user/user.service';
+import { UserService } from 'src/user/user.service'
 import { User } from '../user/entities/user.entity';
 
 

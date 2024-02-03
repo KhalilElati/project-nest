@@ -6,7 +6,7 @@ import { NutritionCheck } from './entities/nutrition_check.entity';
 import { Repository } from 'typeorm';
 import { NutritionCheckDto } from './dto/nutrition_check.dto';
 import { User } from 'src/user/user/entities/user.entity';
-import { UserService } from 'src/user/user/user.service';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class NutritionCheckService {

@@ -39,7 +39,7 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
       port: parseInt(this.configService.get<string>('DB_PORT')),
       database: this.configService.get<string>('DB_NAME'),
       password: this.configService.get<string>('DB_PASSWORD'),
-
+      // entities:[entities],
       entities: ['dist/**/*.entity{.ts,.js}'],
 
       synchronize: Boolean(process.env.SYNCHRONIZE) || false,
